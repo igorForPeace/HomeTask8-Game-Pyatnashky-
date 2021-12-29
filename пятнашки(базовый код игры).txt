@@ -1,0 +1,231 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+using namespace std;
+int main()
+{
+	enum direction { DOWN = 80, UP = 72, LEFT = 75, RIGHT = 77 };
+	const int N = 4;
+	int arr[N][N];
+	int number = 1;
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (i == 3 && j == 3)
+			{
+				arr[i][j] = 0;
+				continue;
+			}
+			arr[i][j] = number;
+			number++;
+
+		}
+	}
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cout << arr[i][j];
+			if (arr[i][j] < 10)
+			{
+				cout << "  ";
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+	int i = 3;
+	int j = 3;
+
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD cursorPos;
+	cursorPos.X = 9;
+	cursorPos.Y = 3;
+	SetConsoleCursorPosition(hStdOut, cursorPos);
+	while (true)
+	{
+		if (_kbhit)
+		{
+			int direct = _getch();
+			if (direct == 224)
+				direct = _getch();
+
+			switch (direct)
+			{
+			case UP:
+				if (cursorPos.Y == 0)
+				{
+					continue;
+				}
+				cursorPos.Y -= 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				cout <<"0 ";
+				cursorPos.Y += 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				arr[i ][j] = arr[i-1][j];
+				cout << arr[i][j];
+				i -= 1;
+				cursorPos.Y -= 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				int number_2 = 1;
+				int count = 0;
+				for (int i = 0; i < N; i++)
+				{
+					for (int j = 0; j < N; j++)
+					{
+						if (arr[i][j] == number_2)
+						{
+							number_2++;
+							count++;
+							if (count == 15)
+							{
+								cout << "You are winner!" << endl;
+								exit(0);
+							}
+							else
+							{
+
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				break;
+			case DOWN:
+				if (cursorPos.Y == 3)
+				{
+					continue;
+				}
+				cursorPos.Y += 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				cout <<"0 ";
+				cursorPos.Y -= 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				arr[i][j] = arr[i + 1][j];
+				cout << arr[i][j];
+				i += 1;
+				cursorPos.Y += 1;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				int number_2 = 1;
+				int count = 0;
+				for (int i = 0; i < N; i++)
+				{
+					for (int j = 0; j < N; j++)
+					{
+						if (arr[i][j] == number_2)
+						{
+							number_2++;
+							count++;
+							if (count == 15)
+							{
+								cout << "You are winner!" << endl;
+								exit(0);
+							}
+							else
+							{
+
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				break;
+			case RIGHT:
+				if (cursorPos.X >= 9)
+				{
+				     continue;
+				}
+				cursorPos.X += 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				cout <<"0 ";
+				cursorPos.X -= 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				arr[i][j] = arr[i][j + 1];
+				cout << arr[i][j];
+				j += 1;	
+				cursorPos.X += 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				int number_2 = 1;
+				int count = 0;
+				for (int i = 0; i < N; i++)
+				{
+					for (int j = 0; j < N; j++)
+					{
+						if (arr[i][j] == number_2)
+						{
+							number_2++;
+							count++;
+							if (count == 15)
+							{
+								cout << "You are winner!" << endl;
+								exit(0);
+							}
+							else
+							{
+
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				break;
+			case LEFT:
+				if (cursorPos.X == 0)
+				{
+					continue;
+				}
+				cursorPos.X -= 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				cout <<"0 ";
+				cursorPos.X += 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				arr[i][j] = arr[i][j - 1];
+				cout << arr[i][j];
+				j -= 1;
+				cursorPos.X -= 3;
+				SetConsoleCursorPosition(hStdOut, cursorPos);
+				int number_2 = 1;
+				int count = 0;
+				for (int i = 0; i < N; i++)
+				{
+					for (int j = 0; j < N; j++)
+					{
+						if (arr[i][j] == number_2)
+						{
+							number_2++;
+							count++;
+							if (count == 15)
+							{
+								cout << "You are winner!" << endl;
+								exit(0);
+							}
+							else
+							{
+
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				break;
+			}
+		}
+	}
+	return 0;
+}

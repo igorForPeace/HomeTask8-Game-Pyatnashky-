@@ -1,0 +1,7 @@
+﻿Build started...
+1>------ Build started: Project: HomeTask8(Game-Pyatnashky), Configuration: Debug Win32 ------
+1>HomeTsak8(game-Pyatnashky).cpp
+1>C:\Users\Admin\source\repos\HomeTask8(Game-Pyatnashky)\HomeTask8(Game-Pyatnashky)\HomeTsak8(game-Pyatnashky).cpp(74,7): warning C4551: function call missing argument list
+1>LINK : fatal error LNK1168: cannot open C:\Users\Admin\source\repos\HomeTask8(Game-Pyatnashky)\Debug\HomeTask8(Game-Pyatnashky).exe for writing
+1>Done building project "HomeTask8(Game-Pyatnashky).vcxproj" -- FAILED.
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
